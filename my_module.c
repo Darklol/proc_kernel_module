@@ -219,7 +219,7 @@ static ssize_t proc_write(struct file *file, const char __user *ubuf, size_t cou
 	args_num = sscanf(vbuf, "%d %1024s %d", &arg1, &arg2, &arg3);
 	
 	
-	if (args_num == 3 || arg3 > MAX_PATH_LEN) {
+	if (args_num == 3 || arg3 <= MAX_PATH_LEN) {
 		printk(KERN_INFO "Arguments have been read: arg1 = %d, arg2 = %1024s, arg3 = %d\n", arg1, arg2, arg3);
 		struct_id = arg1;
 		if (arg1 == 0) {
